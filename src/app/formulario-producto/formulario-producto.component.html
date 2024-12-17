@@ -1,0 +1,40 @@
+<h2>{{titulo}}</h2>
+<form (submit)="guardarCambio()" [formGroup]="form">
+
+    <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input [formControl]="form.controls.nombre" matInput/>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Descripcion</mat-label>
+        <input [formControl]="form.controls.description" matInput/>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Estado</mat-label>
+        <input [formControl]="form.controls.status" matInput/>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Cantidad</mat-label>
+        <input [formControl]="form.controls.cantidad" matInput type="number"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Precio Unidad</mat-label>
+        <input [formControl]="form.controls.price" matInput type="number"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Pago esperado</mat-label>
+        <input [value]="pagoEsperado()"  matInput readonly=""/>
+    </mat-form-field>
+
+    <div class="example-button-row">
+        <button type="submit" mat-flat-button>
+            Guardar
+        </button>
+        <a mat-flat-button color="warn" href="/productos">Cancelar</a>
+    </div>
+</form>

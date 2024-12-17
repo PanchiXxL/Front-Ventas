@@ -1,0 +1,9 @@
+@if(modelo){
+    <app-formulario-producto titulo="Editar Laptop" [modelo]="modelo"
+        (posteofomrulario)="GuardarCambios($event);"
+    >
+    </app-formulario-producto>
+}@else {
+    <app-landing/>
+}
+

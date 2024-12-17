@@ -1,0 +1,57 @@
+<h2>Laptops</h2>
+
+<div>
+    <button mat-flat-button routerLink="/productos/crear">
+        Crear Laptop
+    </button>
+</div>
+
+    @if (laptops) {
+        <table mat-table [dataSource]="laptops" class="mat-elevation-z8 indice-elementos">
+            <ng-container matColumnDef="Nombre">
+                <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                <td mat-cell *matCellDef="let laptop"> {{ laptop.nombre }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Descripcion">
+                <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+                <td mat-cell *matCellDef="let laptop"> {{ laptop.description }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Status">
+                <th mat-header-cell *matHeaderCellDef>Status</th>
+                <td mat-cell *matCellDef="let laptop"> {{ laptop.status }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Cantidad">
+                <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+                <td mat-cell *matCellDef="let laptop"> {{ laptop.cantidad }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Precio">
+                <th mat-header-cell *matHeaderCellDef>Precio</th>
+                <td mat-cell *matCellDef="let laptop"> {{ laptop.price }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Total">
+                <th mat-header-cell *matHeaderCellDef>Total</th>
+                <td mat-cell *matCellDef="let laptop"> {{ laptop.total }} </td>
+            </ng-container>
+
+
+    
+            <ng-container matColumnDef="Acciones">
+                <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                <td mat-cell *matCellDef="let laptop"> 
+                    <a mat-flat-button color="accent" href="/productos/editar/{{laptop.id}}">Editar</a>
+                    <button mat-flat-button color="warn" 
+                    [swal]="{title:'Confirmacion', text:'Deseas borrar este registro?', showCancelButton:true}"
+                    (confirm)="borrar(laptop.id);">Borrar</button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="columnasMostrar"></tr>
+            <tr mat-header-row *matRowDef="let row; columns:columnasMostrar"></tr>
+        </table>
+    }@else {
+        <app-landing/>
+    }
